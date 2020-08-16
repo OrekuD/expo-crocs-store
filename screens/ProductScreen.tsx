@@ -13,22 +13,27 @@ import { width } from "../constants/Layout";
 import { RectButton } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { RootStackParamList } from "../types";
+import { StackScreenProps } from "@react-navigation/stack";
 
-interface ProductScreenProps {}
 const IMAGE_CONTAINER_SIZE = 70;
 const CIRCLE_SIZE = 350;
 
 const images = [
-  { id: "0", image: require("../assets/images/1.jpg") },
-  { id: "1", image: require("../assets/images/2.jpg") },
-  { id: "2", image: require("../assets/images/3.jpg") },
+  { id: "0", image: require("../assets/images/2.jpg") },
+  { id: "1", image: require("../assets/images/3.jpg") },
+  { id: "2", image: require("../assets/images/4.jpg") },
 ];
 
-const ProductScreen = (props: ProductScreenProps) => {
+const ProductScreen = ({
+  navigation,
+}: StackScreenProps<RootStackParamList, "Product">) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Header />
+        <View style={{ marginRight: 20 }}>
+          <Header />
+        </View>
         <View style={styles.content}>
           <View style={styles.row}>
             <Text style={styles.title}>Classic Clog</Text>
@@ -52,7 +57,7 @@ const ProductScreen = (props: ProductScreenProps) => {
             <View style={styles.right}>
               <View style={styles.circle} />
               <Image
-                source={require("../assets/images/10001_682_ALT140.png")}
+                source={require("../assets/images/1.png")}
                 style={{
                   width: "85%",
                   transform: [{ rotate: "-10deg" }, { translateY: 40 }],
