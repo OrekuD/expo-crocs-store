@@ -1,10 +1,18 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { pink, green, pink2 } from "../constants/Colors";
 import { Header } from "../components";
 import { width } from "../constants/Layout";
 import { RectButton } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface ProductScreenProps {}
 const IMAGE_CONTAINER_SIZE = 70;
@@ -19,50 +27,68 @@ const images = [
 const ProductScreen = (props: ProductScreenProps) => {
   return (
     <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <View style={styles.row}>
-          <Text style={styles.title}>Classic Clog</Text>
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>New</Text>
+      <ScrollView>
+        <Header />
+        <View style={styles.content}>
+          <View style={styles.row}>
+            <Text style={styles.title}>Classic Clog</Text>
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>New</Text>
+            </View>
           </View>
+          <Text style={styles.priceText}>$32.99</Text>
+          <View style={styles.images}>
+            <View style={styles.left}>
+              {images.map(({ image, id }) => (
+                <View key={id} style={styles.imageContainer}>
+                  <Image
+                    source={image}
+                    resizeMode="contain"
+                    style={{ width: "75%", height: "75%" }}
+                  />
+                </View>
+              ))}
+            </View>
+            <View style={styles.right}>
+              <View style={styles.circle} />
+              <Image
+                source={require("../assets/images/10001_682_ALT140.png")}
+                style={{
+                  width: "85%",
+                  transform: [{ rotate: "-10deg" }, { translateY: 40 }],
+                  alignSelf: "flex-end",
+                  marginRight: -30,
+                }}
+                resizeMode="contain"
+              />
+            </View>
+          </View>
+          <Text style={styles.overviewText}>Overview</Text>
+          <Text style={styles.descriptionText}>
+            Nulla deserunt veniam elit anim in velit amet enim veniam sint
+            veniam sit. Excepteur ipsum sint aliquip in proident laborum ea sint
+            veniam consectetur minim fugiat. Non ut velit amet non dolore ipsum
+            incididunt aliquip ea. Nisi aute proident nostrud ullamco in velit
+            ipsum magna velit amet laboris officia adipisicing cillum. Commodo
+            cupidatat ut nostrud amet consectetur occaecat adipisicing aliquip
+            ipsum minim et Lorem irure. Dolor in elit ut pariatur esse aliquip.
+            Duis culpa est exercitation sunt est officia ad et pariatur mollit.
+            Ut ullamco dolore Lorem Lorem qui consectetur aute occaecat
+            incididunt do ullamco pariatur.
+          </Text>
         </View>
-        <Text style={styles.priceText}>$32.99</Text>
-        <View style={styles.images}>
-          <View style={styles.left}>
-            {images.map(({ image, id }) => (
-              <View key={id} style={styles.imageContainer}>
-                <Image
-                  source={image}
-                  resizeMode="contain"
-                  style={{ width: "75%", height: "75%" }}
-                />
-              </View>
-            ))}
-          </View>
-          <View style={styles.right}>
-            <View style={styles.circle} />
-            <Image
-              source={require("../assets/images/10001_682_ALT140.png")}
-              style={{
-                width: "85%",
-                transform: [{ rotate: "-10deg" }, { translateY: 40 }],
-                alignSelf: "flex-end",
-                marginRight: -30,
-              }}
-              resizeMode="contain"
-            />
-          </View>
-        </View>
-      </View>
-      <View style={styles.bottomTab}>
+      </ScrollView>
+      <LinearGradient
+        colors={["transparent", pink, pink, pink, pink2]}
+        style={styles.bottomTab}
+      >
         <RectButton style={styles.button}>
           <Text style={styles.buttonText}>add to cart</Text>
         </RectButton>
         <TouchableOpacity style={styles.iconButton}>
           <Ionicons name="md-heart-empty" color="#fff" size={30} />
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     </View>
   );
 };
@@ -175,5 +201,17 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  overviewText: {
+    marginTop: 40,
+    marginBottom: 20,
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+  descriptionText: {
+    width: "95%",
+    lineHeight: 30,
+    fontSize: 18,
+    color: "grey",
   },
 });
