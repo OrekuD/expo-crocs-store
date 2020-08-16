@@ -12,7 +12,7 @@ const types = [
 ];
 
 const SIDEBAR_WIDTH = width * 0.65;
-const SIDEBAR_HEIGHT = 60;
+const SIDEBAR_HEIGHT = 65;
 
 const Sidebar = (props: SidebarProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: "#fff",
     zIndex: 10,
-    paddingRight: 30,
+    paddingRight: 40,
     transform: [
       { translateX: -SIDEBAR_WIDTH / 2 },
       { translateY: -SIDEBAR_HEIGHT / 2 },

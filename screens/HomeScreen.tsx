@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Text, View, StyleSheet, FlatList, Animated } from "react-native";
-import { Header, Searchbar, Sidebar } from "../components";
+import { Header, Searchbar, Sidebar, Slides } from "../components";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../types";
 import { palewhite } from "../constants/Colors";
@@ -15,14 +15,10 @@ const slides = [
   { id: "4" },
   { key: "5" },
 ];
-const SLIDE_WIDTH = width * 0.5;
-const SLIDE_HEIGHT = 300;
-const SPACER_WIDTH = (width - SLIDE_WIDTH - 40) / 2;
 
 const HomeScreen = ({
   navigation,
 }: StackScreenProps<RootStackParamList, "Home">) => {
-  const scrollX = useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
       <Header />
@@ -41,47 +37,7 @@ const HomeScreen = ({
           </View>
         ))}
       </View>
-      <View style={styles.slides}>
-        <Sidebar />
-        <Animated.FlatList
-          data={slides}
-          keyExtractor={(item) => Math.random().toString()}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{
-            alignItems: "center",
-          }}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-            { useNativeDriver: false }
-          )}
-          decelerationRate="fast"
-          snapToInterval={SLIDE_WIDTH}
-          snapToAlignment="center"
-          renderItem={({ item, index }) => {
-            const inputRange = [
-              (index - 2) * SLIDE_WIDTH,
-              (index - 1) * SLIDE_WIDTH,
-              index * SLIDE_WIDTH,
-            ];
-
-            const scale = scrollX.interpolate({
-              inputRange,
-              outputRange: [0.8, 1, 0.8],
-              extrapolate: "clamp",
-            });
-            if (item.key) {
-              return <View style={{ width: SPACER_WIDTH }} />;
-            } else {
-              return (
-                <Animated.View
-                  style={{ ...styles.slide, transform: [{ scale }] }}
-                />
-              );
-            }
-          }}
-        />
-      </View>
+      <Slides navigation={navigation} />
     </View>
   );
 };
@@ -91,17 +47,18 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     backgroundColor: "#fff",
   },
   title: {
     fontSize: 30,
-    marginVertical: 20,
+    margin: 20,
     color: "#121212",
   },
   row: {
     flexDirection: "row",
     marginTop: 30,
+    marginHorizontal: 20,
   },
   tag: {
     height: 50,
@@ -116,16 +73,5 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 18,
     fontWeight: "bold",
-  },
-  slides: {
-    position: "relative",
-    height: width * 0.7,
-    marginTop: 25,
-    // backgroundColor: "green",
-  },
-  slide: {
-    width: SLIDE_WIDTH,
-    height: SLIDE_HEIGHT,
-    backgroundColor: "red",
   },
 });
