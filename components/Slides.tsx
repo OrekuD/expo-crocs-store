@@ -10,15 +10,8 @@ import Slide from "./Slide";
 interface SlidesProps {
   navigation: StackNavigationProp<RootStackParamList, "Home">;
 }
-const slides = [
-  { key: "10" },
-  { id: "2" },
-  { id: "3" },
-  { id: "4" },
-  { key: "5" },
-];
+
 const SLIDE_WIDTH = width * 0.5;
-const SLIDE_HEIGHT = 300;
 const SPACER_WIDTH = (width - SLIDE_WIDTH) / 2;
 
 const Slides = ({ navigation }: SlidesProps) => {

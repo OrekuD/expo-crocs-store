@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { pink, green, pink2 } from "../constants/Colors";
+import { green, pink2 } from "../constants/Colors";
 import { Header } from "../components";
 import { width } from "../constants/Layout";
 import { RectButton } from "react-native-gesture-handler";
@@ -18,12 +18,6 @@ import { StackScreenProps } from "@react-navigation/stack";
 
 const IMAGE_CONTAINER_SIZE = 70;
 const CIRCLE_SIZE = 350;
-
-// const images = [
-//   { id: "0", image: require("../assets/images/2.jpg") },
-//   { id: "1", image: require("../assets/images/3.jpg") },
-//   { id: "2", image: require("../assets/images/4.jpg") },
-// ];
 
 const ProductScreen = ({
   navigation,

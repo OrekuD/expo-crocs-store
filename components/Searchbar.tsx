@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { palewhite, green, lightgrey } from "../constants/Colors";
-import { RectButton } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 
 interface SearchbarProps {}

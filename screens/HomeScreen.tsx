@@ -1,29 +1,13 @@
-import React, { useRef } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  Animated,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { Header, Searchbar, Sidebar, Slides, Card } from "../components";
+import React from "react";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Header, Searchbar, Slides, Card } from "../components";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../types";
 import { palewhite } from "../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
-import { width } from "../constants/Layout";
 import { products } from "../data/products";
 
 const tags = ["Crocs", "Summer"];
-const slides = [
-  { key: "1" },
-  { id: "2" },
-  { id: "3" },
-  { id: "4" },
-  { key: "5" },
-];
 
 const HomeScreen = ({
   navigation,

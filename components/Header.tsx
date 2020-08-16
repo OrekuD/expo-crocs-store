@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StackNavigationProp } from "@react-navigation/stack";
