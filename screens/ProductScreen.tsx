@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   badge: {
-    width: 44,
-    height: 22,
+    width: 48,
+    height: 24,
     borderRadius: 5,
     backgroundColor: green,
     alignItems: "center",

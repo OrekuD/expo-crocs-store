@@ -11,6 +11,7 @@ export interface Product {
   colors: string[];
   rating: number;
   price: number;
+  imageRotation: string;
   images: [{ id: string; image: ImageRequireSource }];
   description: string;
 }

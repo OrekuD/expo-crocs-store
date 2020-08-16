@@ -1,4 +1,5 @@
 import { pink, pink2 } from "../constants/Colors";
+import { Product } from "../types";
 
 export const products = [
   {
@@ -7,6 +8,7 @@ export const products = [
     colors: [pink, pink2],
     rating: 4.9,
     price: 32.99,
+    imageRotation: "-15deg",
     images: [
       { id: "0", image: require("../assets/images/1.png") },
       { id: "1", image: require("../assets/images/2.jpg") },
@@ -22,6 +24,7 @@ export const products = [
     colors: ["#9B3037", "#AC555B"],
     rating: 4.8,
     price: 44.99,
+    imageRotation: "-2deg",
     images: [
       { id: "0", image: require("../assets/images/5.png") },
       { id: "1", image: require("../assets/images/6.jpg") },
@@ -37,6 +40,7 @@ export const products = [
     colors: ["#4D4E51", "#58595B"],
     rating: 4.7,
     price: 38.99,
+    imageRotation: "-14deg",
     images: [
       { id: "0", image: require("../assets/images/9.png") },
       { id: "1", image: require("../assets/images/10.jpg") },

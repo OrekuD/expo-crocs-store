@@ -12,7 +12,7 @@ const types = [
 ];
 
 const SIDEBAR_WIDTH = width * 0.65;
-const SIDEBAR_HEIGHT = 65;
+const SIDEBAR_HEIGHT = 85;
 
 const Sidebar = (props: SidebarProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
       { translateX: -SIDEBAR_WIDTH / 2 },
       { translateY: -SIDEBAR_HEIGHT / 2 },
       { rotateZ: "-90deg" },
-      { translateX: SIDEBAR_WIDTH / 2 - 50 },
+      { translateX: SIDEBAR_WIDTH / 2 - 70 },
       { translateY: SIDEBAR_HEIGHT / 2 },
     ],
   },

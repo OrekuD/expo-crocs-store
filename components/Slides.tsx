@@ -19,7 +19,7 @@ const slides = [
 ];
 const SLIDE_WIDTH = width * 0.5;
 const SLIDE_HEIGHT = 300;
-const SPACER_WIDTH = (width - SLIDE_WIDTH - 40) / 2;
+const SPACER_WIDTH = (width - SLIDE_WIDTH) / 2;
 
 const Slides = ({ navigation }: SlidesProps) => {
   const scrollX = useRef(new Animated.Value(0)).current;
