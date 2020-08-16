@@ -12,6 +12,7 @@ export interface Product {
   rating: number;
   price: number;
   imageRotation: string;
-  images: [{ id: string; image: ImageRequireSource }];
+  imageTranslateY: number;
+  images: { id: string; image: ImageRequireSource }[];
   description: string;
 }

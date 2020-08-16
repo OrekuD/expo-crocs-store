@@ -19,32 +19,43 @@ import { StackScreenProps } from "@react-navigation/stack";
 const IMAGE_CONTAINER_SIZE = 70;
 const CIRCLE_SIZE = 350;
 
-const images = [
-  { id: "0", image: require("../assets/images/2.jpg") },
-  { id: "1", image: require("../assets/images/3.jpg") },
-  { id: "2", image: require("../assets/images/4.jpg") },
-];
+// const images = [
+//   { id: "0", image: require("../assets/images/2.jpg") },
+//   { id: "1", image: require("../assets/images/3.jpg") },
+//   { id: "2", image: require("../assets/images/4.jpg") },
+// ];
 
 const ProductScreen = ({
   navigation,
+  route,
 }: StackScreenProps<RootStackParamList, "Product">) => {
+  const { item } = route.params;
+  const {
+    name,
+    colors,
+    price,
+    images,
+    description,
+    imageRotation,
+    imageTranslateY,
+  } = item;
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, backgroundColor: colors[0] }}>
       <ScrollView>
         <View style={{ marginRight: 20 }}>
-          <Header />
+          <Header navigation={navigation} />
         </View>
         <View style={styles.content}>
           <View style={styles.row}>
-            <Text style={styles.title}>Classic Clog</Text>
+            <Text style={styles.title}>{name}</Text>
             <View style={styles.badge}>
               <Text style={styles.badgeText}>New</Text>
             </View>
           </View>
-          <Text style={styles.priceText}>$32.99</Text>
+          <Text style={styles.priceText}>${price}</Text>
           <View style={styles.images}>
             <View style={styles.left}>
-              {images.map(({ image, id }) => (
+              {images.slice(0, 3).map(({ image, id }) => (
                 <View key={id} style={styles.imageContainer}>
                   <Image
                     source={image}
@@ -55,12 +66,15 @@ const ProductScreen = ({
               ))}
             </View>
             <View style={styles.right}>
-              <View style={styles.circle} />
+              <View style={{ ...styles.circle, backgroundColor: colors[1] }} />
               <Image
-                source={require("../assets/images/1.png")}
+                source={images[0].image}
                 style={{
                   width: "85%",
-                  transform: [{ rotate: "-10deg" }, { translateY: 40 }],
+                  transform: [
+                    { rotate: imageRotation },
+                    { translateY: imageTranslateY },
+                  ],
                   alignSelf: "flex-end",
                   marginRight: -30,
                 }}
@@ -69,22 +83,11 @@ const ProductScreen = ({
             </View>
           </View>
           <Text style={styles.overviewText}>Overview</Text>
-          <Text style={styles.descriptionText}>
-            Nulla deserunt veniam elit anim in velit amet enim veniam sint
-            veniam sit. Excepteur ipsum sint aliquip in proident laborum ea sint
-            veniam consectetur minim fugiat. Non ut velit amet non dolore ipsum
-            incididunt aliquip ea. Nisi aute proident nostrud ullamco in velit
-            ipsum magna velit amet laboris officia adipisicing cillum. Commodo
-            cupidatat ut nostrud amet consectetur occaecat adipisicing aliquip
-            ipsum minim et Lorem irure. Dolor in elit ut pariatur esse aliquip.
-            Duis culpa est exercitation sunt est officia ad et pariatur mollit.
-            Ut ullamco dolore Lorem Lorem qui consectetur aute occaecat
-            incididunt do ullamco pariatur.
-          </Text>
+          <Text style={styles.descriptionText}>{description}</Text>
         </View>
       </ScrollView>
       <LinearGradient
-        colors={["transparent", pink, pink, pink, pink2]}
+        colors={["transparent", colors[0], colors[0], colors[0], colors[1]]}
         style={styles.bottomTab}
       >
         <RectButton style={styles.button}>
@@ -103,7 +106,6 @@ export default ProductScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: pink,
     paddingLeft: 20,
   },
   content: {
@@ -218,5 +220,6 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     fontSize: 18,
     color: "grey",
+    marginBottom: 160,
   },
 });

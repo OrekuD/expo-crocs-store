@@ -1,11 +1,20 @@
 import React, { useRef } from "react";
-import { Text, View, StyleSheet, FlatList, Animated } from "react-native";
-import { Header, Searchbar, Sidebar, Slides } from "../components";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  Animated,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import { Header, Searchbar, Sidebar, Slides, Card } from "../components";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../types";
 import { palewhite } from "../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { width } from "../constants/Layout";
+import { products } from "../data/products";
 
 const tags = ["Crocs", "Summer"];
 const slides = [
@@ -20,8 +29,10 @@ const HomeScreen = ({
   navigation,
 }: StackScreenProps<RootStackParamList, "Home">) => {
   return (
-    <View style={styles.container}>
-      <Header />
+    <ScrollView style={styles.container}>
+      <View style={{ marginHorizontal: 20 }}>
+        <Header navigation={navigation} />
+      </View>
       <Text style={styles.title}>Women's</Text>
       <Searchbar />
       <View style={styles.row}>
@@ -38,7 +49,13 @@ const HomeScreen = ({
         ))}
       </View>
       <Slides navigation={navigation} />
-    </View>
+      <View style={{ marginHorizontal: 20 }}>
+        <Text style={styles.popularText}>Popular</Text>
+        {[...products].reverse().map((item, index) => (
+          <Card item={item} key={index} navigation={navigation} />
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -52,12 +69,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    margin: 20,
+    marginVertical: 10,
+    marginHorizontal: 20,
     color: "#121212",
   },
   row: {
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: 20,
     marginHorizontal: 20,
   },
   tag: {
@@ -73,5 +91,11 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+  popularText: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginVertical: 10,
+    marginTop: 20,
   },
 });

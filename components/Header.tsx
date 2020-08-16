@@ -2,16 +2,24 @@ import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../types";
+import { BorderlessButton } from "react-native-gesture-handler";
 
-interface HeaderProps {}
+interface HeaderProps {
+  navigation: StackNavigationProp<RootStackParamList, "Home" | "Product">;
+}
 
 const DOT_SIZE = 6;
 
-const Header = (props: HeaderProps) => {
+const Header = ({ navigation }: HeaderProps) => {
   const { top: paddingTop } = useSafeAreaInsets();
   return (
     <View style={{ ...styles.container, paddingTop }}>
-      <MaterialCommunityIcons name="chevron-left" color="#121212" size={34} />
+      <BorderlessButton onPress={navigation.goBack}>
+        <MaterialCommunityIcons name="chevron-left" color="#121212" size={34} />
+      </BorderlessButton>
+
       <View style={styles.menuIcon}>
         <View style={styles.dot} />
         <View style={styles.dot} />

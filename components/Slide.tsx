@@ -41,6 +41,7 @@ const Slide = ({ navigation, scale, item }: SlideProps) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("Product", { item })}
           style={{ ...styles.slide }}
+          activeOpacity={0.8}
         >
           <View style={styles.row}>
             <View style={styles.badge}>

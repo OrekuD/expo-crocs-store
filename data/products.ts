@@ -1,7 +1,7 @@
 import { pink, pink2 } from "../constants/Colors";
 import { Product } from "../types";
 
-export const products = [
+export const products: Product[] = [
   {
     id: "0",
     name: "Classic Clog",
@@ -9,6 +9,7 @@ export const products = [
     rating: 4.9,
     price: 32.99,
     imageRotation: "-15deg",
+    imageTranslateY: 40,
     images: [
       { id: "0", image: require("../assets/images/1.png") },
       { id: "1", image: require("../assets/images/2.jpg") },
@@ -21,10 +22,11 @@ export const products = [
   {
     id: "1",
     name: "Baya Clog",
-    colors: ["#9B3037", "#AC555B"],
+    colors: ["#9B3037", "#A5454B"],
     rating: 4.8,
     price: 44.99,
     imageRotation: "-2deg",
+    imageTranslateY: -12,
     images: [
       { id: "0", image: require("../assets/images/5.png") },
       { id: "1", image: require("../assets/images/6.jpg") },
@@ -41,6 +43,7 @@ export const products = [
     rating: 4.7,
     price: 38.99,
     imageRotation: "-14deg",
+    imageTranslateY: 70,
     images: [
       { id: "0", image: require("../assets/images/9.png") },
       { id: "1", image: require("../assets/images/10.jpg") },
